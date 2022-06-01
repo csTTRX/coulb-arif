@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="r_form">
+    <h1 class = 'r_title'> Connexion </h1>
+    <div class="form-errors">
+        {% for field in form  %}
+        {{field.errors}}
+        {% endfor %}
+    </div>
+    <form action = "", method= "post">
+        {{form.username}}
+        {{form.password}}
+
+        <button type="submit" > Se connecter</button>
+        <p class = "p"> Vous n'avez pas un compte ?<a href=" {% url 'register' %} "> créer un compte</a></p>
+        {% csrf_token %}
+    </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="streaming">
+    <div class="video">
+        <img src="{% url 'video_feed' %}" alt=""/>
+    </div>
+    <div class="actions">
+        <a href=" {% url 'streaming' %} ">Passez</a>
+        <a href=" {% url 'streaming' %} ">Passez</a>
+        <a href=" {% url 'streaming' %} ">Passez</a>
+        <a href=" {% url 'streaming' %} ">Passez</a>
+    </div>
+</div>
+
+{% endblock content %}

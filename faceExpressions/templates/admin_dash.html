@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href=" {% static 'styles.css' %} ">
+        <title>Stream</title>
+    </head>
+
+    <body>
+    <div class="dash">
+        <div class = "dash-nav">
+            <div class = "logo"> <a href=" {% url 'home' %}">0xFer</a></div>
+            <ul>
+                <li>
+                    <a href="">{{user.email}} </a>
+                </li> 
+                <span>|</span>
+                <li>
+                    <a href="{% url 'logout' %}"> logout</a>
+                </li>
+            </ul>
+        </div>
+        <div class="dash-main">
+            {% block content %}
+                <div class="dash-Candidatures">
+                    <h4> Les Candidatures </h4>
+                    <div class="all-Candidatures">
+                        <table> 
+                            <thead>
+                                <th>id</th>
+                                <th>Photo</th>
+                                <th>Name</th>
+                                <th>Prénom</th>
+                                <th>Adress</th>
+                                <th>Email</th>
+                                <th>Poste</th>
+                                <th>Angry </th>
+                                <th>Disgust</th>
+                                <th>Fear</th>
+                                <th>Happy</th>
+                                <th>Naturel</th>
+                                <th>Sad</th>
+                                <th>Surprise</th>
+                            </thead>
+                            <tbody>
+                            {% for candidat in  candidats%}
+                                <tr class = "impair">
+                                    <td>{{candidat.id}}</td>
+                                    {% if candidat.photo_file_name %}
+                                        <td><img class="avatar" src={{ candidat.photo_file_name.url }}></td>
+                                    {% else %}
+                                        <td><img class="avatar" src="{% static 'images/default_profile.png'%}"></td>
+                                    {% endif %}
+                                    <td>{{candidat.first_name}}</td>
+                                    <td>{{candidat.last_name}}</td>
+                                    <td>{{candidat.adress}}</td>
+                                    <td>{{candidat.email}}</td>
+                                    <td>{{candidat.poste}}</td>
+                                    <td>{%widthratio candidat.angry 1 100 %}%</td>
+                                    <td>{%widthratio candidat.disgust 1 100 %}%</td>
+                                    <td>{%widthratio candidat.fear 1 100%}%</td>
+                                    <td>{%widthratio candidat.happy 1 100%}%</td>
+                                    <td>{%widthratio candidat.naturel 1 100%}%</td>
+                                    <td>{%widthratio candidat.sad 1 100 %}%</td>
+                                    <td>{%widthratio candidat.surprise 1 100 %}%</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th scope="row">Totals</th>
+                                <td>{{totals}}</td>
+                            </tr>
+                        </tfoot>
+                        </table>
+                    </div>
+            {% endblock content %}
+        </div>
+    </div>
+    </body>
+</html>

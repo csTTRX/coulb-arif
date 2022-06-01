@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="section">
+    <div class="hero">
+        <div class="hero-container">
+
+            <div class="hero-content hero-text">
+                <h1> Application d'entretien en ligne</h1>
+                <p> Connectez vous et passez votre entretien</p>
+                <p class = "buttom"><a href=" {% url 'candidature' %} ">Deposez candidature</a></p>
+            </div>
+
+            <div class="hero-content hero-img">
+                <img src="{% static  'images/heroo.png' %} " alt="">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
