@@ -1,3 +1,5 @@
+RUN apt-get update && apt-get install -y python3-opencv
+RUN pip install opencv-python
 absl-py==1.0.0
 asgiref==3.5.0
 astunparse==1.6.3
